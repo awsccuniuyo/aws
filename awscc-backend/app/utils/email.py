@@ -26,7 +26,7 @@ def send_registration_confirmation(
     """
     try:
         resend.Emails.send({
-            "from": f"AWS Cloud Club UniUyo <{settings.FROM_EMAIL}>",
+            "from": f"AWS Student Builder Group Uniuyo <{settings.FROM_EMAIL}>",
             "to": [to_email],
             "subject": f"You're registered! {event_title}",
             "html": _registration_email_html(
@@ -56,7 +56,7 @@ def send_event_day_email(
         qr_b64 = base64.b64encode(qr_bytes).decode("utf-8")
 
         resend.Emails.send({
-            "from": f"AWS Cloud Club UniUyo <{settings.FROM_EMAIL}>",
+            "from": f"AWS Student Builder Group Uniuyo <{settings.FROM_EMAIL}>",
             "to": [to_email],
             "subject": f"🎉 It's today! Your entry QR code — {event_title}",
             "html": _event_day_email_html(
@@ -93,7 +93,7 @@ def _registration_email_html(
 
         <!-- Header -->
         <div style="background:#101419;padding:32px 40px;text-align:center;">
-          <p style="color:#FFAA2B;font-size:13px;font-weight:600;letter-spacing:2px;margin:0 0 8px;">AWS CLOUD CLUB</p>
+          <p style="color:#FFAA2B;font-size:13px;font-weight:600;letter-spacing:2px;margin:0 0 8px;">AWS STUDENT BUILDER GROUP</p>
           <h1 style="color:#ffffff;font-size:24px;margin:0;">University of Uyo</h1>
         </div>
 
@@ -122,7 +122,7 @@ def _registration_email_html(
         <!-- Footer -->
         <div style="background:#101419;padding:24px 40px;text-align:center;">
           <p style="color:#666;font-size:12px;margin:0;">
-            AWS Student Community UniUyo · University of Uyo, Uyo, Nigeria<br>
+            AWS Student Builder Group Uniuyo · University of Uyo, Uyo, Nigeria<br>
             <span style="color:#444;">This community is independently organized by students.</span>
           </p>
         </div>
@@ -150,7 +150,7 @@ def _event_day_email_html(
 
         <!-- Header -->
         <div style="background:#101419;padding:32px 40px;text-align:center;">
-          <p style="color:#FFAA2B;font-size:13px;font-weight:600;letter-spacing:2px;margin:0 0 8px;">AWS CLOUD CLUB</p>
+          <p style="color:#FFAA2B;font-size:13px;font-weight:600;letter-spacing:2px;margin:0 0 8px;">AWS STUDENT BUILDER GROUP</p>
           <h1 style="color:#ffffff;font-size:24px;margin:0;">Today is the day! 🚀</h1>
         </div>
 
@@ -183,7 +183,7 @@ def _event_day_email_html(
         <!-- Footer -->
         <div style="background:#101419;padding:24px 40px;text-align:center;">
           <p style="color:#666;font-size:12px;margin:0;">
-            AWS Student Community UniUyo · University of Uyo, Uyo, Nigeria
+            AWS Student Builder Group Uniuyo · University of Uyo, Uyo, Nigeria
           </p>
         </div>
 

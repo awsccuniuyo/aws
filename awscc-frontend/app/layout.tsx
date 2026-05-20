@@ -18,14 +18,14 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: 'AWS Cloud Club UniUyo | Build, Learn & Grow in the Cloud',
+  title: 'AWS Student Builder Group Uniuyo | Build, Learn & Grow in the Cloud',
   description:
     'Join a vibrant community of innovators, creators, and students at the University of Uyo exploring AWS Cloud technologies and real-world solutions.',
   openGraph: {
-    title: 'AWS Cloud Club UniUyo',
-    description: 'Build, Learn & Grow in the Cloud with AWS Student Community UniUyo.',
+    title: 'AWS Student Builder Group Uniuyo',
+    description: 'Build, Learn & Grow in the Cloud with AWS Student Builder Group Uniuyo.',
     url: 'https://awsccuniuyo.vercel.app',
-    siteName: 'AWS Cloud Club UniUyo',
+    siteName: 'AWS Student Builder Group Uniuyo',
     locale: 'en_NG',
     type: 'website',
   },

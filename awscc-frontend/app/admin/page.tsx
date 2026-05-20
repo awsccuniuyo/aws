@@ -458,7 +458,7 @@ function Dashboard() {
               Admin Dashboard
             </p>
             <h1 className="font-display font-black text-2xl md:text-3xl">
-              AWS Cloud Club UniUyo
+              AWS Student Builder Group Uniuyo
             </h1>
           </div>
           <div className="flex items-center gap-2">

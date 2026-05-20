@@ -82,7 +82,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <h3 className="font-display font-bold text-brand-orange mb-3 text-base">
-              AWS Student Community UniUyo
+              AWS Student Builder Group Uniuyo
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               Empowering students, builders, and innovators at the University of Uyo
@@ -158,7 +158,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-gray-500 text-xs">
-            © {currentYear} AWS Student Community UniUyo. All Rights Reserved.
+            © {currentYear} AWS Student Builder Group Uniuyo. All Rights Reserved.
           </p>
           <p className="text-gray-600 text-xs text-center">
             This community is independently organized by students and supported by AWS resources.

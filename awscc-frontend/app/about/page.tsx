@@ -12,19 +12,20 @@ import type { TeamMember } from '@/lib/types'
 import { FadeIn, StaggerContainer, Magnetic } from '@/components/ui/MotionReveal'
 import corevic from '@/public/assets/corevic.jpeg'
 import fortune from '@/public/assets/fortune.jpg'
+import queen from '@/public/assets/queen.jpg'
 
 const image1: string = corevic.src
 const image2: string = fortune.src
+const image3: string = queen.src
+const image4: string
 
 const team: TeamMember[] = [
   { name: 'Divine Justice ',    role: 'Club President',          bio: 'Cloud enthusiast and AWS Community Builder. Passionate about making cloud accessible to every student.', photo: '', socials: { x: '#', linkedin: '#' } },
-  { name: ' Queeen  ',     role: 'Vice President',          bio: 'Full-stack developer and AWS Solutions Architect Associate. Leads technical workshops and hackathons.', photo: '', socials: { linkedin: '#', instagram: '#' } },
+  { name: ' Queen Bassey  ',     role: 'Vice President',          bio: 'A cloud and Blockchain infrastructure expert dedicated to building technologies that strengthens the backbone of modern decentralized and cloud-native systems. She explores how scalable technologies power real-world applications and actively contributes to community learning by simplifying complex concepts, supporting emerging builders, and fostering inclusive tech spaces where innovation can thrive. ', photo: image3, socials: { linkedin: 'queen bassey', x: '@Techgirl_gabby' } },
   { name: 'Blessing Etim', role: 'Technical Lead',          bio: 'DevOps engineer in training. Passionate about CI/CD, infrastructure as code, and serverless architectures.', photo: '', socials: { x: '#', linkedin: '#' } },
-  { name: 'Chidi Nweze',   role: 'Events Coordinator',     bio: 'Organizes impactful tech events and builds bridges between students and industry professionals.', photo: '', socials: { instagram: '#', linkedin: '#' } },
   { name: 'Victor Nwoke',  role: 'Community Manager',      bio: 'Connects members, manages community platforms, and ensures every student feels welcome and supported.', photo: image1, socials: { x: 'bastilista', instagram: 'bastillsta' } },
   { name: 'Fortune Divinewill',  role: 'Content & Media Lead',   bio: 'Storyteller and content strategist. Full-stack developer Documents our community journey and amplifies member stories.', photo: image2, socials: { instagram: '@nodexxplorer', x: '@nodexxplorer' } },
   { name: 'Uche Eze',      role: 'Partnerships Lead',      bio: 'Builds relationships with sponsors, speakers, and partner organizations to bring opportunities to members.', photo: '', socials: { linkedin: '#', x: '#' } },
-  { name: 'Ngozi Okafor',  role: 'Learning & Dev Lead',    bio: 'Designs learning paths, curates AWS study resources, and mentors members on their cloud certifications.', photo: '', socials: { linkedin: '#', instagram: '#' } },
 ]
 
 const growthWays = [
@@ -49,6 +50,23 @@ const growthWays = [
     desc: 'Get preparation support for AWS certifications combined with exciting hackathons and challenges to test your builder skills.',
   },
 ]
+
+function getSocialUrl(platform: 'x' | 'linkedin' | 'instagram', handle?: string) {
+  if (!handle || handle === '#') return '#'
+  if (handle.startsWith('http')) return handle
+  const cleanHandle = handle.startsWith('@') ? handle.slice(1) : handle
+  
+  if (platform === 'x') {
+    return `https://x.com/${cleanHandle}`
+  }
+  if (platform === 'instagram') {
+    return `https://instagram.com/${cleanHandle}`
+  }
+  if (platform === 'linkedin') {
+    return `https://linkedin.com/in/${cleanHandle.toLowerCase().replace(/\s+/g, '')}`
+  }
+  return '#'
+}
 
 export default function AboutPage() {
   return (
@@ -255,20 +273,32 @@ export default function AboutPage() {
                   {/* Socials */}
                   <div className="flex justify-center gap-2 mt-auto">
                     {member.socials.x && (
-                      <a href={member.socials.x} className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark
-                                                             flex items-center justify-center group transition-colors">
+                      <a 
+                        href={getSocialUrl('x', member.socials.x)}
+                        target={member.socials.x !== '#' ? "_blank" : undefined}
+                        rel={member.socials.x !== '#' ? "noopener noreferrer" : undefined}
+                        className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark flex items-center justify-center group transition-colors"
+                      >
                         <Twitter size={12} className="text-brand-dark group-hover:text-white" />
                       </a>
                     )}
                     {member.socials.linkedin && (
-                      <a href={member.socials.linkedin} className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark
-                                                                     flex items-center justify-center group transition-colors">
+                      <a 
+                        href={getSocialUrl('linkedin', member.socials.linkedin)}
+                        target={member.socials.linkedin !== '#' ? "_blank" : undefined}
+                        rel={member.socials.linkedin !== '#' ? "noopener noreferrer" : undefined}
+                        className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark flex items-center justify-center group transition-colors"
+                      >
                         <Linkedin size={12} className="text-brand-dark group-hover:text-white" />
                       </a>
                     )}
                     {member.socials.instagram && (
-                      <a href={member.socials.instagram} className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark
-                                                                      flex items-center justify-center group transition-colors">
+                      <a 
+                        href={getSocialUrl('instagram', member.socials.instagram)}
+                        target={member.socials.instagram !== '#' ? "_blank" : undefined}
+                        rel={member.socials.instagram !== '#' ? "noopener noreferrer" : undefined}
+                        className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark flex items-center justify-center group transition-colors"
+                      >
                         <Instagram size={12} className="text-brand-dark group-hover:text-white" />
                       </a>
                     )}

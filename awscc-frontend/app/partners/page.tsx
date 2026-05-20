@@ -175,7 +175,7 @@ export default function PartnersPage() {
                 Access a Highly Engaged<br />Student Tech Community
               </h2>
               <p className="text-gray-500 text-base leading-relaxed mb-6">
-                AWS Cloud Club UniUyo gives you direct access to motivated, cloud-curious
+                AWS Student Builder Group Uniuyo gives you direct access to motivated, cloud-curious
                 students at one of Nigeria&apos;s leading universities. Our members are tomorrow&apos;s
                 developers, architects, and founders — actively building skills and looking for
                 opportunities.

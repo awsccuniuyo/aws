@@ -9,9 +9,9 @@ interface Props { params: { id: string } }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const event = await getEvent(params.id)
-    return { title: `${event.title} — AWS Cloud Club UniUyo`, description: event.description ?? '' }
+    return { title: `${event.title} — AWS Student Builder Group Uniuyo`, description: event.description ?? '' }
   } catch {
-    return { title: 'Event — AWS Cloud Club UniUyo' }
+    return { title: 'Event — AWS Student Builder Group Uniuyo' }
   }
 }
 

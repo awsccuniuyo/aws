@@ -79,7 +79,13 @@ export const uploadImage = async (file: File) => {
     throw new Error(error.detail ?? `Upload failed: ${res.status}`)
   }
   
-  return res.json() as Promise<{ url: string; filename: string; size: number }>
+  const data = await res.json() as { url: string; filename: string; size: number }
+  // Convert relative URL to absolute URL using BASE
+  const absoluteUrl = data.url.startsWith('http') ? data.url : `${BASE}${data.url}`
+  return {
+    ...data,
+    url: absoluteUrl,
+  }
 }
 
 // ─── Announcements ────────────────────────────────────────────────────────────

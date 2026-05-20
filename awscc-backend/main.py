@@ -19,8 +19,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="AWS Cloud Club UniUyo API",
-    description="Backend for the AWS Student Community UniUyo platform",
+    title="AWS Student Builder Group Uniuyo API",
+    description="Backend for the AWS Student Builder Group Uniuyo platform",
     version="1.0.0",
     lifespan=lifespan,
 )
@@ -49,7 +49,7 @@ app.include_router(announcements.router)
 # ─── Static Files ─────────────────────────────────────────────────────────────
 upload_path = Path(settings.UPLOAD_DIR)
 upload_path.mkdir(parents=True, exist_ok=True)
-app.mount("/uploads", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads")
+app.mount("/uploads/images", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads")
 
 
 # ─── Health Check ─────────────────────────────────────────────────────────────
@@ -57,7 +57,7 @@ app.mount("/uploads", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads"
 async def root():
     return {
         "status": "ok",
-        "service": "AWS Cloud Club UniUyo API",
+        "service": "AWS Student Builder Group Uniuyo API",
         "version": "1.0.0",
         "environment": settings.ENVIRONMENT,
     }

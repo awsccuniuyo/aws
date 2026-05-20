@@ -254,7 +254,7 @@ export default function RegisterPage({ params }: Props) {
 
                 {/* Community member */}
                 <div>
-                  <label className="label-text">Are you part of the AWS Cloud Club Community? *</label>
+                  <label className="label-text">Are you part of the AWS Student Builder Group Community? *</label>
                   <div className="flex gap-3 mt-1">
                     {[true, false].map((val) => (
                       <button

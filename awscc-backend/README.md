@@ -1,6 +1,6 @@
-# AWS Cloud Club UniUyo — Backend API
+# AWS Student Builder Group Uniuyo — Backend API
 
-FastAPI + PostgreSQL (Supabase) backend for the AWS Student Community UniUyo platform.
+FastAPI + PostgreSQL (Supabase) backend for the AWS Student Builder Group Uniuyo platform.
 Handles events, registrations, QR code generation, email delivery, and admin check-in.
 
 ---
