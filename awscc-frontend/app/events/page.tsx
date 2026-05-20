@@ -38,6 +38,13 @@ function EventCard({ event }: { event: Event }) {
     >
       {/* Banner */}
       <div className="h-44 bg-brand-dark flex items-center justify-center relative overflow-hidden">
+        {event.banner_url ? (
+          <img 
+            src={event.banner_url} 
+            alt={event.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : null}
         <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/60 to-brand-dark" />
         <div className="relative z-10 text-center">
           <motion.div

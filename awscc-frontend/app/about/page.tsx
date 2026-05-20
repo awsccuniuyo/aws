@@ -5,18 +5,24 @@ import { motion } from 'framer-motion'
 import { 
   Github, Twitter, Linkedin, Instagram, 
   BookOpen, Code, Users, Trophy, GraduationCap, 
-  Sparkles, Compass, MessageCircle
+  Sparkles, Compass, MessageCircle,
+  Library
 } from 'lucide-react'
 import type { TeamMember } from '@/lib/types'
 import { FadeIn, StaggerContainer, Magnetic } from '@/components/ui/MotionReveal'
+import corevic from '@/public/assets/corevic.jpeg'
+import fortune from '@/public/assets/fortune.jpg'
+
+const image1: string = corevic.src
+const image2: string = fortune.src
 
 const team: TeamMember[] = [
   { name: 'Divine Justice ',    role: 'Club President',          bio: 'Cloud enthusiast and AWS Community Builder. Passionate about making cloud accessible to every student.', photo: '', socials: { x: '#', linkedin: '#' } },
-  { name: ' Ekom Dora ',     role: 'Vice President',          bio: 'Full-stack developer and AWS Solutions Architect Associate. Leads technical workshops and hackathons.', photo: '', socials: { linkedin: '#', instagram: '#' } },
+  { name: ' Queeen  ',     role: 'Vice President',          bio: 'Full-stack developer and AWS Solutions Architect Associate. Leads technical workshops and hackathons.', photo: '', socials: { linkedin: '#', instagram: '#' } },
   { name: 'Blessing Etim', role: 'Technical Lead',          bio: 'DevOps engineer in training. Passionate about CI/CD, infrastructure as code, and serverless architectures.', photo: '', socials: { x: '#', linkedin: '#' } },
   { name: 'Chidi Nweze',   role: 'Events Coordinator',     bio: 'Organizes impactful tech events and builds bridges between students and industry professionals.', photo: '', socials: { instagram: '#', linkedin: '#' } },
-  { name: 'Victor Nwoke',  role: 'Community Manager',      bio: 'Connects members, manages community platforms, and ensures every student feels welcome and supported.', photo: '', socials: { x: 'bastilista', instagram: 'bastillsta' } },
-  { name: 'Fortune Divinewill',  role: 'Content & Media Lead',   bio: 'Storyteller and content strategist. Documents our community journey and amplifies member stories.', photo: '', socials: { instagram: '@nodexxplorer', x: '@nodexxplorer' } },
+  { name: 'Victor Nwoke',  role: 'Community Manager',      bio: 'Connects members, manages community platforms, and ensures every student feels welcome and supported.', photo: image1, socials: { x: 'bastilista', instagram: 'bastillsta' } },
+  { name: 'Fortune Divinewill',  role: 'Content & Media Lead',   bio: 'Storyteller and content strategist. Full-stack developer Documents our community journey and amplifies member stories.', photo: image2, socials: { instagram: '@nodexxplorer', x: '@nodexxplorer' } },
   { name: 'Uche Eze',      role: 'Partnerships Lead',      bio: 'Builds relationships with sponsors, speakers, and partner organizations to bring opportunities to members.', photo: '', socials: { linkedin: '#', x: '#' } },
   { name: 'Ngozi Okafor',  role: 'Learning & Dev Lead',    bio: 'Designs learning paths, curates AWS study resources, and mentors members on their cloud certifications.', photo: '', socials: { linkedin: '#', instagram: '#' } },
 ]
