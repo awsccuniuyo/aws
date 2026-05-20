@@ -17,7 +17,6 @@ import queen from '@/public/assets/queen.jpg'
 const image1: string = corevic.src
 const image2: string = fortune.src
 const image3: string = queen.src
-const image4: string
 
 const team: TeamMember[] = [
   { name: 'Divine Justice ',    role: 'Club President',          bio: 'Cloud enthusiast and AWS Community Builder. Passionate about making cloud accessible to every student.', photo: '', socials: { x: '#', linkedin: '#' } },
