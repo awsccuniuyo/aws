@@ -33,18 +33,41 @@ export default async function EventDetailPage({ params }: Props) {
     )
   }
 
-  const formattedDate = new Date(event.date).toLocaleDateString('en-NG', {
+  const eventDate = new Date(event.date)
+  const formattedDate = eventDate.toLocaleDateString('en-NG', {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
   })
-  const formattedTime = new Date(event.date).toLocaleTimeString('en-NG', {
+  const formattedTime = eventDate.toLocaleTimeString('en-NG', {
     hour: '2-digit', minute: '2-digit',
   })
+
+  // Generate Google Calendar link
+  const startDate = new Date(event.date)
+  const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000) // Add 2 hours
+  
+  const formatGoogleCalendarDate = (date: Date) => {
+    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+  }
+  
+  const googleCalendarUrl = new URL('https://calendar.google.com/calendar/render')
+  googleCalendarUrl.searchParams.set('action', 'TEMPLATE')
+  googleCalendarUrl.searchParams.set('text', event.title)
+  googleCalendarUrl.searchParams.set('dates', `${formatGoogleCalendarDate(startDate)}/${formatGoogleCalendarDate(endDate)}`)
+  googleCalendarUrl.searchParams.set('location', event.location || '')
+  googleCalendarUrl.searchParams.set('details', event.description || '')
 
   return (
     <div className="pt-16">
       {/* Banner */}
       <div className="h-64 md:h-80 bg-brand-dark relative overflow-hidden flex items-end">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-navy to-brand-dark" />
+        {event.banner_url ? (
+          <img 
+            src={event.banner_url} 
+            alt={event.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : null}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/80 to-brand-dark/80" />
         <div className="relative z-10 container-max px-4 md:px-8 lg:px-16 pb-10 w-full">
           <Link href="/events" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-4 transition-colors">
             <ArrowLeft size={14} /> Back to Events
@@ -108,16 +131,26 @@ export default async function EventDetailPage({ params }: Props) {
             <div className="bg-white rounded-2xl p-6">
               <h3 className="font-display font-bold text-brand-dark text-base mb-4">Event Details</h3>
               <div className="space-y-3 text-sm text-gray-600">
-                <div className="flex items-start gap-3">
+                <a 
+                  href={googleCalendarUrl.toString()} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 group cursor-pointer hover:text-brand-orange transition-colors"
+                >
                   <Calendar size={16} className="text-brand-orange mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-brand-dark">{formattedDate}</p>
+                    <p className="font-medium text-brand-dark group-hover:underline">{formattedDate}</p>
                   </div>
-                </div>
-                <div className="flex items-center gap-3">
+                </a>
+                <a 
+                  href={googleCalendarUrl.toString()} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 group cursor-pointer hover:text-brand-orange transition-colors"
+                >
                   <Clock size={16} className="text-brand-orange flex-shrink-0" />
-                  <span>{formattedTime}</span>
-                </div>
+                  <span className="group-hover:underline">{formattedTime}</span>
+                </a>
                 {event.location && (
                   <div className="flex items-start gap-3">
                     <MapPin size={16} className="text-brand-orange mt-0.5 flex-shrink-0" />

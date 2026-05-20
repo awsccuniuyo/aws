@@ -12,10 +12,10 @@ import { FadeIn, StaggerContainer, Magnetic } from '@/components/ui/MotionReveal
 
 const team: TeamMember[] = [
   { name: 'Divine Justice ',    role: 'Club President',          bio: 'Cloud enthusiast and AWS Community Builder. Passionate about making cloud accessible to every student.', photo: '', socials: { x: '#', linkedin: '#' } },
-  { name: ' Queen ',     role: 'Vice President',          bio: 'Full-stack developer and AWS Solutions Architect Associate. Leads technical workshops and hackathons.', photo: '', socials: { linkedin: '#', instagram: '#' } },
+  { name: ' Ekom Dora ',     role: 'Vice President',          bio: 'Full-stack developer and AWS Solutions Architect Associate. Leads technical workshops and hackathons.', photo: '', socials: { linkedin: '#', instagram: '#' } },
   { name: 'Blessing Etim', role: 'Technical Lead',          bio: 'DevOps engineer in training. Passionate about CI/CD, infrastructure as code, and serverless architectures.', photo: '', socials: { x: '#', linkedin: '#' } },
   { name: 'Chidi Nweze',   role: 'Events Coordinator',     bio: 'Organizes impactful tech events and builds bridges between students and industry professionals.', photo: '', socials: { instagram: '#', linkedin: '#' } },
-  { name: 'Sola Adeyemi',  role: 'Community Manager',      bio: 'Connects members, manages community platforms, and ensures every student feels welcome and supported.', photo: '', socials: { x: '#', instagram: '#' } },
+  { name: 'Victor Nwoke',  role: 'Community Manager',      bio: 'Connects members, manages community platforms, and ensures every student feels welcome and supported.', photo: '', socials: { x: 'bastilista', instagram: 'bastillsta' } },
   { name: 'Fortune Divinewill',  role: 'Content & Media Lead',   bio: 'Storyteller and content strategist. Documents our community journey and amplifies member stories.', photo: '', socials: { instagram: '@nodexxplorer', x: '@nodexxplorer' } },
   { name: 'Uche Eze',      role: 'Partnerships Lead',      bio: 'Builds relationships with sponsors, speakers, and partner organizations to bring opportunities to members.', photo: '', socials: { linkedin: '#', x: '#' } },
   { name: 'Ngozi Okafor',  role: 'Learning & Dev Lead',    bio: 'Designs learning paths, curates AWS study resources, and mentors members on their cloud certifications.', photo: '', socials: { linkedin: '#', instagram: '#' } },

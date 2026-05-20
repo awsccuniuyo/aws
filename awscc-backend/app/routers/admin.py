@@ -1,7 +1,10 @@
-from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 from uuid import UUID
+import uuid
+import shutil
+from pathlib import Path
 from typing import List
 from collections import Counter
 from pydantic import BaseModel
@@ -157,3 +160,53 @@ async def send_qr_emails(
         "message": f"Queued {len(registrations)} event-day emails",
         "count": len(registrations),
     }
+
+
+# ─── Image Upload ─────────────────────────────────────────────────────────────
+
+@router.post("/upload-image")
+async def upload_image(file: UploadFile = File(...)):
+    """Upload an image file and return the public URL. Admin use only."""
+    # Validate file type
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="No filename provided")
+    
+    ext = file.filename.split(".")[-1].lower()
+    if ext not in settings.ALLOWED_EXTENSIONS:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid file type. Allowed: {', '.join(settings.ALLOWED_EXTENSIONS)}"
+        )
+    
+    # Validate file size
+    if file.size and file.size > settings.MAX_UPLOAD_SIZE:
+        raise HTTPException(
+            status_code=413,
+            detail=f"File too large. Max size: {settings.MAX_UPLOAD_SIZE / 1024 / 1024}MB"
+        )
+    
+    try:
+        # Generate unique filename
+        unique_id = str(uuid.uuid4())
+        filename = f"{unique_id}.{ext}"
+        filepath = settings.upload_path / filename
+        
+        # Save file
+        with open(filepath, "wb") as f:
+            contents = await file.read()
+            if len(contents) > settings.MAX_UPLOAD_SIZE:
+                filepath.unlink()  # Delete the file if it's too large
+                raise HTTPException(
+                    status_code=413,
+                    detail=f"File too large. Max size: {settings.MAX_UPLOAD_SIZE / 1024 / 1024}MB"
+                )
+            f.write(contents)
+        
+        # Return URL
+        return {
+            "url": f"/uploads/images/{filename}",
+            "filename": filename,
+            "size": len(contents),
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")

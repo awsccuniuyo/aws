@@ -11,6 +11,7 @@ import {
   getEvents, createEvent, updateEvent, deleteEvent,
   getRegistrations, getEventStats, sendQrEmails,
   getAnnouncements, createAnnouncement, updateAnnouncement, deleteAnnouncement,
+  uploadImage,
 } from '@/lib/api'
 import type { Event, Registration, EventStats, Announcement } from '@/lib/types'
 
@@ -111,10 +112,10 @@ function PinGate({ onUnlock }: { onUnlock: () => void }) {
 // ─── Event Form ───────────────────────────────────────────────────────────────
 interface EventFormData {
   title: string; description: string; date: string
-  location: string; max_attendees: string
+  location: string; max_attendees: string; banner_url: string
 }
 const EMPTY_EVENT: EventFormData = {
-  title: '', description: '', date: '', location: '', max_attendees: '',
+  title: '', description: '', date: '', location: '', max_attendees: '', banner_url: '',
 }
 
 function EventForm({
@@ -122,7 +123,23 @@ function EventForm({
 }: { initial?: EventFormData; onSave: (d: EventFormData) => Promise<void>; onCancel: () => void }) {
   const [form, setForm] = useState<EventFormData>(initial ?? EMPTY_EVENT)
   const [saving, setSaving] = useState(false)
+  const [uploading, setUploading] = useState(false)
   const set = (k: keyof EventFormData, v: string) => setForm(p => ({ ...p, [k]: v }))
+
+  async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.currentTarget.files?.[0]
+    if (!file) return
+
+    setUploading(true)
+    try {
+      const result = await uploadImage(file)
+      set('banner_url', result.url)
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Upload failed')
+    } finally {
+      setUploading(false)
+    }
+  }
 
   async function submit() {
     if (!form.title || !form.date) return
@@ -158,6 +175,32 @@ function EventForm({
           <label className="label-text">Max Attendees</label>
           <input type="number" className="input-field" placeholder="Leave blank for unlimited"
             value={form.max_attendees} onChange={e => set('max_attendees', e.target.value)} />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="label-text">Banner Image</label>
+          <div className="flex gap-3">
+            <input 
+              type="file" 
+              accept="image/*"
+              onChange={handleFileUpload}
+              disabled={uploading}
+              className="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-lg
+                         hover:border-gray-300 disabled:opacity-60"
+            />
+            <input 
+              type="url" 
+              className="flex-1 input-field" 
+              placeholder="Or paste image URL"
+              value={form.banner_url} 
+              onChange={e => set('banner_url', e.target.value)} 
+            />
+          </div>
+          {uploading && <p className="text-sm text-gray-500 mt-2">Uploading...</p>}
+          {form.banner_url && (
+            <div className="mt-3 rounded-lg overflow-hidden max-h-32 bg-gray-100">
+              <img src={form.banner_url} alt="Banner preview" className="w-full h-full object-cover" />
+            </div>
+          )}
         </div>
       </div>
       <div className="flex gap-3 pt-2">
@@ -322,6 +365,7 @@ function Dashboard() {
       title: form.title, description: form.description,
       date: new Date(form.date).toISOString(), location: form.location,
       max_attendees: form.max_attendees ? parseInt(form.max_attendees) : undefined,
+      banner_url: form.banner_url || undefined,
     })
     setShowEventForm(false)
     await loadEvents()
@@ -334,6 +378,7 @@ function Dashboard() {
       title: form.title, description: form.description,
       date: new Date(form.date).toISOString(), location: form.location,
       max_attendees: form.max_attendees ? parseInt(form.max_attendees) : undefined,
+      banner_url: form.banner_url || undefined,
     })
     setEditingEvent(null)
     await loadEvents()
@@ -577,6 +622,7 @@ function Dashboard() {
                           title: e.title, description: e.description ?? '',
                           date: e.date.slice(0, 16), location: e.location ?? '',
                           max_attendees: e.max_attendees?.toString() ?? '',
+                          banner_url: e.banner_url ?? '',
                         }}
                         onSave={handleUpdateEvent}
                         onCancel={() => setEditingEvent(null)}

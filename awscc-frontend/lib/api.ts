@@ -65,6 +65,23 @@ export const sendQrEmails = (eventId: string) =>
     { method: 'POST' }
   )
 
+export const uploadImage = async (file: File) => {
+  const formData = new FormData()
+  formData.append('file', file)
+  
+  const res = await fetch(`${BASE}/api/v1/admin/upload-image`, {
+    method: 'POST',
+    body: formData,
+  })
+  
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({ detail: 'Unknown error' }))
+    throw new Error(error.detail ?? `Upload failed: ${res.status}`)
+  }
+  
+  return res.json() as Promise<{ url: string; filename: string; size: number }>
+}
+
 // ─── Announcements ────────────────────────────────────────────────────────────
 
 export const getAnnouncements = (publishedOnly = true) =>
