@@ -13,24 +13,22 @@ import { FadeIn, StaggerContainer, Magnetic } from '@/components/ui/MotionReveal
 import corevic from '@/public/assets/corevic.jpeg'
 import fortune from '@/public/assets/fortune.jpg'
 import queen from '@/public/assets/queen.jpg'
-// import divine from '@/public/assets/divine.jpg'
+import udy from '@/public/assets/udy.jpg'
 // import david from '@/public/assets/divine.jpg'
 // import daniel from '@/public/assets/d.jpg'
 
 const image1: string = corevic.src
 const image2: string = fortune.src
 const image3: string = queen.src
-// const image4: string = divine.src
+const image4: string = udy.src
 // const image5: string = david.src
-// const image6: string = daniel.src
 
 const team: TeamMember[] = [
   { name: 'Divine Justice ',    role: 'Club President',          bio: 'Cloud enthusiast and AWS Community Builder. Passionate about making cloud accessible to every student.', photo: "image4", socials: { x: '#', linkedin: '#' } },
   { name: ' Queen Bassey  ',     role: 'Vice President',          bio: 'A cloud and Blockchain infrastructure expert dedicated to building technologies that strengthens the backbone of modern decentralized and cloud-native systems. She explores how scalable technologies power real-world applications and actively contributes to community learning by simplifying complex concepts, supporting emerging builders, and fostering inclusive tech spaces where innovation can thrive. ', photo: image3, socials: { linkedin: 'queen bassey', x: '@Techgirl_gabby' } },
-  { name: 'Blessing Etim', role: 'Technical Lead',          bio: 'DevOps engineer in training. Passionate about CI/CD, infrastructure as code, and serverless architectures.', photo: "image5", socials: { x: '#', linkedin: '#' } },
   { name: 'Victor Nwoke',  role: 'Community Manager',      bio: 'Connects members, manages community platforms, and ensures every student feels welcome and supported.', photo: image1, socials: { x: 'bastilista', instagram: 'bastillsta' } },
-  { name: 'Fortune Divinewill',  role: 'Content & Media Lead',   bio: 'Storyteller and content strategist. Full-stack developer Documents our community journey and amplifies member stories.', photo: image2, socials: { instagram: '@nodexxplorer', x: '@nodexxplorer' } },
-  { name: 'Uche Eze',      role: 'Partnerships Lead',      bio: 'Builds relationships with sponsors, speakers, and partner organizations to bring opportunities to members.', photo: "image6", socials: { linkedin: '#', x: '#' } },
+  { name: 'Fortune Divinewill',  role: 'Partnerships and Events Management Lead',   bio: 'Storyteller and Events strategist. Full-stack developer Documents our community journey and amplifies member stories.', photo: image2, socials: { instagram: '@nodexxplorer', x: '@nodexxplorer' } },
+  { name: 'uduak Etuk', role: 'Content & Media Lead',          bio: 'Serves as the Content Lead, where she is responsible for shaping and communicating the narrative around AWS-driven initiatives. She leads the creation and distribution of content that drives awareness, engagement, and participation within the community covering event promotion, storytelling, and post-event content. Her role involves translating technical concepts into clear, relatable messaging that resonates with students and aspiring tech professionals. With experience in community building and research, she brings a structured, insight-driven approach to content ensuring that ideas are not only shared, but understood and impactful.', photo: image4, socials: { x: '#', linkedin: '#' } },
 ]
 
 const growthWays = [
