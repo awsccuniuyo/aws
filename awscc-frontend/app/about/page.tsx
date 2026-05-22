@@ -14,17 +14,16 @@ import corevic from '@/public/assets/corevic.jpeg'
 import fortune from '@/public/assets/fortune.jpg'
 import queen from '@/public/assets/queen.jpg'
 import udy from '@/public/assets/udy.jpg'
-// import david from '@/public/assets/divine.jpg'
-// import daniel from '@/public/assets/d.jpg'
+import divine from '@/public/assets/divine.jpg'
 
 const image1: string = corevic.src
 const image2: string = fortune.src
 const image3: string = queen.src
 const image4: string = udy.src
-// const image5: string = david.src
+const image5: string = divine.src
 
 const team: TeamMember[] = [
-  { name: 'Divine Justice ',    role: 'Club President',          bio: 'Cloud enthusiast and AWS Community Builder. Passionate about making cloud accessible to every student.', photo: "image4", socials: { x: '#', linkedin: '#' } },
+  { name: 'Divine Justice ',    role: 'Club President',          bio: 'Cloud enthusiast, community builder, and AWS advocate. As Club President of AWS Student Builder Group Uniuyo, Divine leads a growing community of student builders at the University of Uyo — making cloud computing accessible, practical, and exciting for the next generation of tech innovators.', photo: "image4", socials: { x: '@awscloudboy',} },
   { name: ' Queen Bassey  ',     role: 'Vice President',          bio: 'A cloud and Blockchain infrastructure expert dedicated to building technologies that strengthens the backbone of modern decentralized and cloud-native systems. She explores how scalable technologies power real-world applications and actively contributes to community learning by simplifying complex concepts, supporting emerging builders, and fostering inclusive tech spaces where innovation can thrive. ', photo: image3, socials: { linkedin: 'queen bassey', x: '@Techgirl_gabby' } },
   { name: 'Victor Nwoke',  role: 'Community Manager',      bio: 'Connects members, manages community platforms, and ensures every student feels welcome and supported.', photo: image1, socials: { x: 'bastilista', instagram: 'bastillsta' } },
   { name: 'Fortune Divinewill',  role: 'Partnerships and Events Management Lead',   bio: 'Storyteller and Events strategist. Full-stack developer Documents our community journey and amplifies member stories.', photo: image2, socials: { instagram: '@nodexxplorer', x: '@nodexxplorer' } },
