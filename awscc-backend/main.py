@@ -27,9 +27,12 @@ app = FastAPI(
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
 allowed_origins = [
-    settings.FRONTEND_URL,
-    "http://localhost:3000",
-    "http://localhost:3001",
+    origin for origin in [
+        settings.FRONTEND_URL,
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "https://aws-tawny-rho.vercel.app"
+    ] if origin
 ]
 
 app.add_middleware(
