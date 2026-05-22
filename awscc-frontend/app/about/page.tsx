@@ -28,8 +28,18 @@ const team: TeamMember[] = [
   { name: ' Queen Bassey  ',     role: 'Vice President',          bio: 'A cloud and Blockchain infrastructure expert dedicated to building technologies that strengthens the backbone of modern decentralized and cloud-native systems. She explores how scalable technologies power real-world applications and actively contributes to community learning by simplifying complex concepts, supporting emerging builders, and fostering inclusive tech spaces where innovation can thrive. ', photo: image3, socials: { linkedin: 'queen bassey', x: '@Techgirl_gabby' } },
   { name: 'Victor Nwoke',  role: 'Community Manager',      bio: 'Connects members, manages community platforms, and ensures every student feels welcome and supported.', photo: image1, socials: { x: 'bastilista', instagram: 'bastillsta' } },
   { name: 'Fortune Divinewill',  role: 'Partnerships and Events Management Lead',   bio: 'Storyteller and Events strategist. Full-stack developer Documents our community journey and amplifies member stories.', photo: image2, socials: { instagram: '@nodexxplorer', x: '@nodexxplorer' } },
-  { name: 'uduak Etuk', role: 'Content & Media Lead',          bio: 'Serves as the Content Lead, where she is responsible for shaping and communicating the narrative around AWS-driven initiatives. She leads the creation and distribution of content that drives awareness, engagement, and participation within the community covering event promotion, storytelling, and post-event content. Her role involves translating technical concepts into clear, relatable messaging that resonates with students and aspiring tech professionals. With experience in community building and research, she brings a structured, insight-driven approach to content ensuring that ideas are not only shared, but understood and impactful.', photo: image4, socials: { x: '#', linkedin: '#' } },
+  { name: 'uduak Etuk', role: 'Content & Media Lead',          bio: 'Serves as the Content Lead, where she is responsible for shaping and communicating the narrative around AWS-driven initiatives. She leads the creation and distribution of content that drives awareness, engagement, and participation within the community covering event promotion, storytelling, and post-event content. She brings a structured, insight-driven approach to content ensuring that ideas are not only shared, but understood and impactful.', photo: image4, socials: { x: 'uduak_etuk_', linkedin: 'uduak-etuk-349b73240', instagram: 'udy_etuk_' } },
 ]
+
+function getSocialUrl(platform: 'x' | 'linkedin' | 'instagram', handle?: string) {
+  if (!handle || handle === '#') return '#'
+  if (handle.startsWith('http')) return handle
+  const cleanHandle = handle.startsWith('@') ? handle.slice(1) : handle
+  if (platform === 'x') return `https://x.com/${cleanHandle}`
+  if (platform === 'instagram') return `https://instagram.com/${cleanHandle}`
+  if (platform === 'linkedin') return `https://linkedin.com/in/${cleanHandle.toLowerCase().replace(/\s+/g, '')}`
+  return '#'
+}
 
 const growthWays = [
   {
@@ -259,20 +269,32 @@ export default function AboutPage() {
                   {/* Socials */}
                   <div className="flex justify-center gap-2 mt-auto">
                     {member.socials.x && (
-                      <a href={member.socials.x} className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark
-                                                             flex items-center justify-center group transition-colors">
+                      <a
+                        href={getSocialUrl('x', member.socials.x)}
+                        target={member.socials.x !== '#' ? '_blank' : undefined}
+                        rel={member.socials.x !== '#' ? 'noopener noreferrer' : undefined}
+                        className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark flex items-center justify-center group transition-colors"
+                      >
                         <Twitter size={12} className="text-brand-dark group-hover:text-white" />
                       </a>
                     )}
                     {member.socials.linkedin && (
-                      <a href={member.socials.linkedin} className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark
-                                                                     flex items-center justify-center group transition-colors">
+                      <a
+                        href={getSocialUrl('linkedin', member.socials.linkedin)}
+                        target={member.socials.linkedin !== '#' ? '_blank' : undefined}
+                        rel={member.socials.linkedin !== '#' ? 'noopener noreferrer' : undefined}
+                        className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark flex items-center justify-center group transition-colors"
+                      >
                         <Linkedin size={12} className="text-brand-dark group-hover:text-white" />
                       </a>
                     )}
                     {member.socials.instagram && (
-                      <a href={member.socials.instagram} className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark
-                                                                      flex items-center justify-center group transition-colors">
+                      <a
+                        href={getSocialUrl('instagram', member.socials.instagram)}
+                        target={member.socials.instagram !== '#' ? '_blank' : undefined}
+                        rel={member.socials.instagram !== '#' ? 'noopener noreferrer' : undefined}
+                        className="w-7 h-7 rounded-full bg-brand-dark/10 hover:bg-brand-dark flex items-center justify-center group transition-colors"
+                      >
                         <Instagram size={12} className="text-brand-dark group-hover:text-white" />
                       </a>
                     )}
