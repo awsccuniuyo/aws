@@ -35,6 +35,7 @@ allowed_origins = [
     ] if origin
 ]
 
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
