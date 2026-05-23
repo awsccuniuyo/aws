@@ -10,7 +10,7 @@ const links = [
   { label: 'About',             href: '/about' },
   { label: 'Events',            href: '/events' },
   { label: 'Partners',          href: '/partners' },
-  { label: 'Student Community', href: '/student-community' },
+  { label: 'Community', href: '/student-community' },
 ]
 
 export default function Navbar() {
@@ -35,12 +35,11 @@ export default function Navbar() {
       <nav className="max-w-6xl mx-auto px-4 md:px-8 lg:px-16 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-brand-dark flex items-center justify-center group-hover:bg-brand-navy transition-colors">
-            <span className="text-brand-orange text-xs font-black">AWS</span>
+          <div className="w-10 h-10 bg-brand-black relative flex items-center justify-center">
+            <img src="/assets/bglogos.png" alt="AWS Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="font-display font-bold text-brand-dark text-sm hidden sm:block leading-tight">
-            Cloud Clubs<br />
-            <span className="text-xs font-normal text-gray-500">UniUyo</span>
+          <span className="hidden sm:block pr-4 rounded-full">
+            <img src="/assets/awslogo.png" alt="AWSCC" className="h-6 rounded-full object-contain" />
           </span>
         </Link>
 
